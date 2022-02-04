@@ -1,0 +1,16 @@
+{
+    "name": "aryala7/laragrid",
+    "autoload": {
+        "psr-4": {
+            "Aryala7\\Laragrid\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aryala7",
+            "email": "arya.lavasani@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
