@@ -27,10 +27,14 @@ class LaragridServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if($this->app->runningInConsole()) {
-            $this->publishes([
-				__DIR__ . '/../config/laragrid.php' => config_path('laragrid.php'),
-			], 'config');
-        }
+         /**
+         * Configurations that needs to be done by user.
+         */
+        $this->publishes(
+            [
+                __DIR__ . '/../config/laragrid.php' => config_path('laragrid.php'),
+            ],
+            'config'
+        );
     }
 }
