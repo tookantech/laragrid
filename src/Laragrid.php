@@ -1,6 +1,7 @@
 <?php
 namespace Aryala7\Laragrid;
 
+use Illuminate\Support\Facades\Http;
 
 class Laragrid {
 
@@ -23,28 +24,18 @@ class Laragrid {
         public static function getNet($net) {
 
             return match($net){
-                'main'=>function(){
-                    return self::getMainNet();
-                },
-                'shasta'=>function(){
-                    return self::getShastaTestNet();
-                },
-                'nile'=>function(){
-                    return self::getNileTestNet();
-                },
+                'main'=>self::getMainNet(),
+                'shasta'=>self::getShastaTestNet(),
+                'nile'=>self::getNileTestNet(),
             };
         }
 
         public function getAddressDetail($address)
         {
-            $client = new \GuzzleHttp\Client();
-            $response = $client->reponse('GET', self::getNet('main') . '/address/' . $address,[
-                'headers' => [
-                    'Accept' => 'application/json'
-                ]
-            ]);
-
-            return $response->getBody();
+            $response = Http::get(self::getNet('main') . "accounts/$address")->json();
+            if($response['success'] == true){
+                return $response['data'];
+            }
 
         }
 

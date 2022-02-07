@@ -11,6 +11,13 @@
             "email": "arya.lavasani@gmail.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aryala7\\Laragrid\\LaragridServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
