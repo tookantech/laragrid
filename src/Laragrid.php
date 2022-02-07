@@ -37,11 +37,11 @@ class Laragrid {
 
         public function getAddressDetail($address)
         {
+            dd('ss');
+            dd(self::getNet('main'));
             $client = new \GuzzleHttp\Client();
-            $response = $client->reponse('GET', self::getNet('main') . '/address/' . $address,[
-                'headers' => [
-                    'Accept' => 'application/json'
-                ]
+            $response = $client->reponse('GET', self::getNet('main') . 'accounts/address/' . $address,[
+                'headers' => ['Accept' => 'application/json','Content-Type' => 'application/json','TRON-PRO-API-KEY' => self::getToken()]
             ]);
 
             return $response->getBody();
